@@ -1,0 +1,7 @@
+---
+- name: Ansible aws Playbook
+  hosts: eu-west-1
+  become: yes
+
+  tasks:
+   - ping:

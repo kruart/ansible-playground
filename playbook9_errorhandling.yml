@@ -1,0 +1,25 @@
+---
+- name: Ansible Error Handling
+  hosts: all
+  # any_errors_fatal: true # any error fails playbook execution
+  become: yes
+
+  tasks:
+  - name: Task Number1
+    apt: name=treeee state=latest  # treeee package is not exist
+    ignore_errors: yes        # if there would be error, continue run other tasks anyway
+
+  - name: Task Number2
+    shell: echo Hello World!
+    register: results   # register output 'echo Hello World!' in results var
+    failed_when: results.rc == 0   # 0 is succecfully return code
+    # failed_when: "'World' in results.stdout"  # if World word in results then fails
+
+
+  - debug:
+      var: results
+
+  - name: Task Number3
+    shell: echo Sending message... bla bla bla
+
+  

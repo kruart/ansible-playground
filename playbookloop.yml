@@ -1,0 +1,32 @@
+---
+- name: Loops Playbook
+  hosts: linux1
+  become: yes
+
+  tasks:
+  - name: Say hello to All
+    debug: msg="Hello {{ item }}"
+    loop: # or with_items
+      - "Daniel"
+      - "Kevin"
+      - "Arthur"
+
+  - name: Loop Until example
+    shell: echo -n Z >> /home/ubuntu/myfile.txt && cat /home/ubuntu/myfile.txt
+    register: output	# save cat output in "output" variable
+    delay: 2      # seconds
+    retries: 10   # times
+    until: output.stdout.find("ZZZZ") == false
+
+  - name: Print Final Output
+    debug:
+      var: output.stdout
+
+  - name: Install many packaged
+    apt: name={{ item }} state=installed
+    with_items: # or loop
+       - tree     # for example
+       - stress   # for example
+       - java8    # for example
+       - scala    # for example 
+

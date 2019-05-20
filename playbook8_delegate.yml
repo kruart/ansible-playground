@@ -1,0 +1,56 @@
+---
+- name: My Super Playbook
+  hosts: all
+  become: yes
+
+  vars:
+   mytext: "Some Cool Text Here"
+
+  tasks:
+  - name: Ping Test
+    ping:
+
+  - name: Unregister Server from Fake Load Balancer
+    shell: echo This server {{ inventory_hostname }} was deregistered from our Load Balancer, node name is {{ ansible_nodename }} >> /home/kruart/Downloads/log.txt
+    sudo: false
+    delegate_to: 127.0.0.1  # run on my local machine
+
+  - name: Update my Database
+    shell: echo UPDATING Database....
+    run_once: true  # runs only on one server in order
+
+  - name: Create file1
+    copy:
+      dest: /home/ubuntu/file1.txt
+      content: |
+        This is FileN1
+        On English Hello World
+        On Ukrainian {{ mytext }}
+    delegate_to: linux1   # run this task only on linux1 server
+
+  - name: Create file2
+    copy:
+      dest: /home/ubuntu/file2.txt
+      content: |
+        This is FileN2
+        On English Hello World
+        On Ukrainian {{ mytext }}
+
+  - name: Reboot my servers
+    shell: sleep 3 && reboot now  # sleep 3 seconds and reboot
+    async: 1
+    poll: 0
+
+  - name: Wait till my server will come up online
+    wait_for:
+      host: "{{ inventory_hostname }}"
+      state: started
+      delay: 5
+      timeout: 60 # max timeout
+    sudo: false
+    # delegate_to: 127.0.0.1  # run on my local machine
+    connection: local     # the same effect as 'delegate_to: 127.0.0.1'
+
+
+
+

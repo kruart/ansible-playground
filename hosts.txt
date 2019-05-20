@@ -1,0 +1,2 @@
+[staging_server]
+linux1	ansible_host=ec2-54-77-143-12.eu-west-1.compute.amazonaws.com owner=Daniel

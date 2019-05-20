@@ -1,0 +1,16 @@
+---
+- name: My Super Playbook
+  hosts: all
+  become: yes
+
+  vars:
+   mytext: "Some Cool Text Here"
+
+  tasks:
+  - name: Ping Test
+    ping:
+
+  - include: create_folders.yml # include and import are very similar
+  - include: create_files.yml mytext="Hello from Vancouver BC"
+
+

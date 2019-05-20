@@ -1,0 +1,148 @@
+  632  sudo apt-add-repository --yes --update ppa:ansible/ansible
+  633  sudo apt install ansible
+  634  ansible --version
+  646  rm -d ansible
+  648  mkdir ansible && cd $_
+  653  ansible -i hosts.txt all -m ping
+  657  ansible all -m ping
+  660  ansible --version
+  666  sudo pip3 install ansible
+  668  ansible all -m ping
+  669  ansible --version
+  672  ansible --version
+  673  ansible all -m ping
+  674  sudo apt-get remove --auto-remove ansible
+  675  ansible --version
+  676  ansible all -m ping
+  677  pip3 ansible
+  678  whereis ansible
+  679  pip3 uninstall ansible
+  680  sudo pip3 uninstall ansible
+  681  ansible --version
+  682  sudo pip3 install ansible
+  683  ansible all -m ping
+  684  hs ansible
+  687  cd ansible
+  690  hs ansible
+  691  ansible -i hosts.txt all -m ping
+  692  ansible-inventory --lists
+  693  ansible-inventory --list
+  694  ansible-inventory --graph
+  695  ansible-inventory --help
+  696  ansible --help
+  704  ansible all -m ping
+  705  ansible all -m setup
+  706  ansible staging -m setup
+  707  ansible all -m shell -a "uptime"
+  708  ansible all -m shell -a "ls /etc"
+  709  ansible all -m shell -a "ls /"
+  710  ansible all -m shell -a "ls /home/ubuntu"
+  711  ansible all -m shell -a "ls /var"
+  712  ansible all -m shell -a "command /var"
+  713  ansible all -m command -a "ls /var"
+  714  ansible all -m shell -a "ls /etc | grep passw"
+  717  ansible all -m copy -a "src=pryvit.txt dest=/home/ubuntu mode=777"
+  720  ansible all -m shell -a "ls -la /home/ubuntu"
+  721  ansible all -m file -a "path=/home/ubuntu/pryvit.txt state=absent"
+  722  ansible all -m shell -a "ls -la /home/ubuntu"
+  723  ansible all -m apt "name=stress state=installed" -b
+  724  ansible all -m apt "name=stress state=latest" -b
+  725  ansible all -m apt "name=stress state=latest"
+  726  ansible all -m apt -a "name=stress state=latest"
+  727  ansible all -m apt -a "name=stress state=latest" -b
+  729  ansible all -m apt -a "name=stress state=absent" -b
+  730  ansible staging uri -a "url=https://youtube.com"
+  731  ansible staging -m uri -a "url=https://youtube.com"
+  732  ansible all -m apt -a "name=https state=latest" -b
+  733  ansible all -m apt -a "name=httpd state=latest" -b
+  735  ansible all -m apt -a "name=httpd state=latest" -b
+  736  ansible all -m apt -a "name=apache2 state=latest" -b
+  737  ansible all -m service -a "name=httpd state=started enabled=yes" -b
+  739  ansible all -m service -a "name=apache2 state=started enabled=yes" -b
+  744  ansible all -m apt -a "name=apache2 state=absent" -b
+  746  ansible all -m apt -a "name=apache2 state=absent" -b
+  747  ansible-doc -l
+  748  ansible-doc -l | grep ec2
+  749  ansible-doc -l | grep apt
+  757  ansible all -m shell -a "ls -la /home/ubuntu"
+  759  ansible all -m shell -a "ls -la /home/ubuntu"
+  760  ansible-inventory --list
+  763  cat ansible.cfg
+  767  ansible-playbook playbook1.yml
+  769  ansible-playbook playbook2.yml
+  773  cd ansible
+  777  ansible all -m apt -a "name=apache2 state=absent" -b
+  779  ansible-playbook playbook3.yml
+  781  ansible-playbook playbook3.yml
+  787  cd ansible
+  788  ansible-playbook playbook5.yml
+  791  ansible-playbook playbook5.yml
+  793  ansible-playbook playbook5.yml
+  795  ansible-playbook playbookloop.yml
+  798  ansible-playbook playbookloop.yml
+  801  ansible-playbook playbookloop.yml
+  803  ansible-playbook playbookloop.yml
+  805  ansible-playbook playbookloop.yml
+  823  ansible-playbook playbook6.yml
+  824  ansible-playbook playbook6.ym
+  825  ansible-playbook playbook6.yml
+  826  ansible-playbook playbook6.ym
+  827  ansible-playbook playbook6.yml
+  829  cd ansible
+  841  cd ansible
+  859  ansible-playbook playbook6_jinja.yml
+  862  ansible-playbook playbook6_jinja.yml
+  863  hs ansible
+  864  hs ansible > commands.txt
+  868  ansible-galaxy init deploy_apache_web
+  880  ansible-playbook playbook6_roles.yml
+  884  ansible-playbook playbook6_roles_extra_vars.yml --extra-var "MY_HOSTS=staging_server"
+  885  ansible-playbook playbook6_roles_extra_vars.yml --extra-var "MYHOSTS=staging_server"
+  886  ansible-playbook playbook6_roles_extra_vars.yml -e "MYHOSTS=staging_server"
+  887  ansible-playbook playbook6_roles_extra_vars.yml -e "MYHOSTS=staging_server owner=Arthur"
+  892  ansible-playbook playbook7_include.yml
+  894  ansible-playbook playbook7_include.yml
+  897  ansible-playbook playbook7_include.yml
+  900  ansible-playbook playbook7_include.yml
+  902  ansible-playbook playbook7_include.yml
+  904  ansible-playbook playbook7_include.yml
+  909  ansible-playbook playbook7_include.yml
+  911  ansible-playbook playbook7_include.yml
+  915  ansible-playbook playbook8_delegate.yml
+  917  ansible-playbook playbook8_delegate.yml
+  919  ansible-playbook playbook8_delegate.yml
+  922  cd ansible
+  925  ansible-playbook playbook_errorhandling.yml
+  929  ansible-playbook playbook9_errorhandling.yml
+  931  ansible-playbook playbook9_errorhandling.yml
+  934  ansible-playbook playbook9_errorhandling.yml
+  937  ansible-vault create mysecret.txt
+  940  ansible-vault view mysecret.txt
+  941  ansible-vault edit mysecret.txt
+  942  ansible-vault rekey mysecret.txt
+  944  ansible-vault encrypt playbook_vault.yml
+  945  ansible-vault encrypt playbook9_vault.yml
+  946  ansible-vault view playbook9_vault.yml
+  947  ansible-vault decrypt playbook9_vault.yml
+  949  ansible-vault encrypt playbook9_vault.yml
+  951  ansible-playbook playbook9_vault.yml --ask-vault-pass
+  952  ansible-vault decrypt playbook9_vault.yml
+  954  ansible-playbook playbook9_vault.yml
+  955  ansible-vault encrypt playbook9_vault.yml
+  956  ansible-playbook playbook9_vault.yml --ask-vault-pass
+  958  ansible-playbook playbook9_vault.yml --vault-password-file mypass.txt
+  959  ansible-vault decrypt playbook9_vault.yml
+  960  ansible-vault encrypt_string
+  961  ansible-playbook playbook9_vault.yml --ask-vault-pass
+  962  cd ansible_aws
+  963  wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini
+ 1011  ansible --version
+ 1012  hs pip3 install ansible
+ 1014  pip install ansible
+ 1021  ansible-playbook -i ec2.py
+ 1022  ansible-playbook -i ec2.py playbook_aws.yml
+ 1024  ansible-playbook -i ec2.py playbook_aws.yml
+ 1026  ansible-playbook -i ec2.py playbook_aws.yml
+ 1028  ansible-playbook -i ec2.py playbook_aws.yml
+ 1031  ansible-playbook -i ec2.py playbook_aws.yml
+ 1033  cd ansible
